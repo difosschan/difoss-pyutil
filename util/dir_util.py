@@ -50,10 +50,19 @@ def walk(input_dir: str,
          exclude_files: list=None,
          exclude_extensions: list=None,
          include_extensions: list=None,
+         without_root_path: bool = False,
          **kwargs) -> Tuple[List[str], List[str]]:
 
     dirs = []
     files = []
 
     walk_tail_recursive(input_dir, dirs, files, exclude_dirs, exclude_files, exclude_extensions, include_extensions)
+
+    if without_root_path:
+        if not input_dir.endswith(os.path.sep):
+            input_dir = input_dir + os.path.sep
+        input_dir_byte_len = len(input_dir)
+        dirs = [x[input_dir_byte_len:] for x in dirs]
+        files = [x[input_dir_byte_len:] for x in files]
+
     return dirs, files

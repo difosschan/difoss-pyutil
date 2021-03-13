@@ -1,17 +1,21 @@
-from setuptools import setup, find_packages
+try:
+    from setuptools import setup, find_packages
+except ImportError:
+    from distutils.core import setup, find_packages
 
 setup(
-    name='difoss-pyutil',
-    version='0.1.0',
-    packages=[*find_packages(), '.'],
+    name='difoss_pyutil',
+    version='0.1.3',
+    py_modules=['difoss_pyutil'],
+    packages=find_packages(exclude=['build',]),
     install_requires=[
         'Click',
         'GitPython',
     ],
     entry_points={
         'console_scripts': {
-            "my.diff=diff:dir_diff",
-            "dfpy=diff:main"
+            "my.diff = main:cmd_diff",
+            "df.cmd = main:main"
         },
     },
 )
