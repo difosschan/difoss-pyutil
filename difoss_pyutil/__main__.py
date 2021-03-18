@@ -4,7 +4,7 @@
 #
 __all__ = ('dir_diff', 'main')
 
-from util import *
+from . import *
 
 from os.path import join as path_join
 import os
