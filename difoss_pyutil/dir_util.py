@@ -8,7 +8,7 @@ __all__ = ('walk',)
 import os
 from typing import Tuple, List
 from . import get_file_info
-from .log import P
+from .log_util import P
 
 
 def walk_tail_recursive(input_dir: str, dirs=[], files=[],
